@@ -37,7 +37,7 @@ describe('UserExampleForm', () => {
     expect(emailInput).toHaveValue('harry.potter@hogwarts.ac.uk')
 
     const dateOfBirthInput = screen.getByLabelText(/date of birth/i)
-    expect(dateOfBirthInput).toHaveValue('1980-07-31T00:00')
+    expect(dateOfBirthInput).toHaveValue('1980-07-31')
   })
 
   it('should not call onSave when missing information', async () => {
@@ -49,7 +49,7 @@ describe('UserExampleForm', () => {
     await user.type(nameInput, 'Harry Potter')
 
     const dateOfBirthInput = screen.getByLabelText(/date of birth/i)
-    await user.type(dateOfBirthInput, '1980-07-31T00:00')
+    await user.type(dateOfBirthInput, '1980-07-31')
 
     const submitButton = screen.getByRole('button', { name: /save/i })
     await user.click(submitButton)
@@ -69,7 +69,7 @@ describe('UserExampleForm', () => {
     await user.type(emailInput, 'harry.potter@hogwarts.ac.uk')
 
     const dateOfBirthInput = screen.getByLabelText(/date of birth/i)
-    await user.type(dateOfBirthInput, '1980-07-31T00:00')
+    await user.type(dateOfBirthInput, '1980-07-31')
 
     const submitButton = screen.getByRole('button', { name: /save/i })
     await user.click(submitButton)
@@ -79,7 +79,7 @@ describe('UserExampleForm', () => {
       {
         name: 'Harry Potter',
         email: 'harry.potter@hogwarts.ac.uk',
-        dateOfBirth: new Date('1980-07-30T23:00:00.000Z'),
+        dateOfBirth: new Date('1980-07-31T00:00:00.000Z'),
       },
       undefined
     )

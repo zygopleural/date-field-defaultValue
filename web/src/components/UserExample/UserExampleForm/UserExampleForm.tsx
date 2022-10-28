@@ -6,14 +6,14 @@ import {
   FieldError,
   Label,
   TextField,
-  DatetimeLocalField,
   Submit,
+  DateField,
 } from '@redwoodjs/forms'
 import type { RWGqlError } from '@redwoodjs/forms'
 
 const formatDatetime = (value) => {
-  if (value) {
-    return value.replace(/:\d{2}\.\d{3}\w/, '')
+  if (value && value.indexOf('T') >= 0) {
+    return value.split('T')[0]
   }
 }
 
@@ -84,7 +84,7 @@ const UserExampleForm = (props: UserExampleFormProps) => {
           Date of birth
         </Label>
 
-        <DatetimeLocalField
+        <DateField
           name="dateOfBirth"
           defaultValue={formatDatetime(props.userExample?.dateOfBirth)}
           className="rw-input"
