@@ -1,3 +1,5 @@
+import type { EditUserExampleById, UpdateUserExampleInput } from 'types/graphql'
+
 import {
   Form,
   FormError,
@@ -7,18 +9,13 @@ import {
   DatetimeLocalField,
   Submit,
 } from '@redwoodjs/forms'
-
-import type { EditUserExampleById, UpdateUserExampleInput } from 'types/graphql'
 import type { RWGqlError } from '@redwoodjs/forms'
-
-
 
 const formatDatetime = (value) => {
   if (value) {
     return value.replace(/:\d{2}\.\d{3}\w/, '')
   }
 }
-
 
 type FormUserExample = NonNullable<EditUserExampleById['userExample']>
 
@@ -31,16 +28,6 @@ interface UserExampleFormProps {
 
 const UserExampleForm = (props: UserExampleFormProps) => {
   const onSubmit = (data: FormUserExample) => {
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
     props.onSave(data, props?.userExample?.id)
   }
 
@@ -53,7 +40,7 @@ const UserExampleForm = (props: UserExampleFormProps) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-      
+
         <Label
           name="email"
           className="rw-label"
@@ -61,15 +48,14 @@ const UserExampleForm = (props: UserExampleFormProps) => {
         >
           Email
         </Label>
-        
-          <TextField
-            name="email"
-            defaultValue={props.userExample?.email}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <TextField
+          name="email"
+          defaultValue={props.userExample?.email}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="email" className="rw-field-error" />
 
@@ -80,14 +66,13 @@ const UserExampleForm = (props: UserExampleFormProps) => {
         >
           Name
         </Label>
-        
-          <TextField
-            name="name"
-            defaultValue={props.userExample?.name}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <TextField
+          name="name"
+          defaultValue={props.userExample?.name}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="name" className="rw-field-error" />
 
@@ -98,23 +83,19 @@ const UserExampleForm = (props: UserExampleFormProps) => {
         >
           Date of birth
         </Label>
-        
-          <DatetimeLocalField
-            name="dateOfBirth"
-            defaultValue={formatDatetime(props.userExample?.dateOfBirth)}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <DatetimeLocalField
+          name="dateOfBirth"
+          defaultValue={formatDatetime(props.userExample?.dateOfBirth)}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="dateOfBirth" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit
-            disabled={props.loading}
-            className="rw-button rw-button-blue"
-          >
+          <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>
